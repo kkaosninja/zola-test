@@ -1,3 +1,4 @@
+name: Deploy to Cloudflare Pages
 on: [push]
 jobs:
   deploy:
@@ -13,7 +14,12 @@ jobs:
           submodules: true
       # Run your project's build step
       - name: Build 
-        run: wget https://github.com/getzola/zola/releases/download/v0.15.3/zola-v0.15.3-x86_64-unknown-linux-gnu.tar.gz && tar -xzvf zola-v0.15.3-x86_64-unknown-linux-gnu.tar.gz && export PATH=$PWD:$PATH && zola check && zola build
+        run: |
+          wget https://github.com/getzola/zola/releases/download/v0.15.3/zola-v0.15.3-x86_64-unknown-linux-gnu.tar.gz 
+          tar -xzvf zola-v0.15.3-x86_64-unknown-linux-gnu.tar.gz
+          export PATH=$PWD:$PATH
+          zola check
+          zola build
       - name: Publish
         uses: cloudflare/pages-action@1
         with:
