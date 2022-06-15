@@ -20,6 +20,7 @@ jobs:
           export PATH=$PWD:$PATH
           zola check
           zola build
+          ls -la ./public/
       - name: Publish
         uses: cloudflare/pages-action@1
         with:
