@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Pages
 on: [push]
 
 env: 
-  $ZOLA_VERSION: v0.15.3
+  ZOLA_VERSION: v0.15.3
 jobs:
   deploy:
     runs-on: ubuntu-latest
