@@ -10,9 +10,11 @@ Current Score: https://observatory.mozilla.org/analyze/zola-test.pages.dev
 
 There is a [Dockerfile](Dockerfile) available which you can use to generate the blog and then have `zola` serve it locally. Commands are below
 
+Note: Replacing `/etc/apt/sources.list` file in the container with custom list of Indian Ubuntu mirrors, to speed up the `apt update` step of container build.
+
 ```bash
-docker build . -t zolatest:latest
-docker run -d -p 1024:1024 -p 8080:8080 zolatest:latest
+docker build . -t zolatest
+docker run -d -p 127.0.0.1:1024:1024 -p 127.0.0.1:8080:8080 zolatest
 ```
 
 The blog should be available at http://localhost:8080
