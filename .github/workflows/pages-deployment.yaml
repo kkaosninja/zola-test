@@ -1,5 +1,9 @@
 name: Deploy to Cloudflare Pages
+
 on: [push]
+
+env: 
+  $ZOLA_VERSION: v0.15.3
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,9 +19,8 @@ jobs:
       # Run your project's build step
       - name: Build 
         run: |
-          wget https://github.com/getzola/zola/releases/download/v0.15.3/zola-v0.15.3-x86_64-unknown-linux-gnu.tar.gz 
-          tar -xzvf zola-v0.15.3-x86_64-unknown-linux-gnu.tar.gz
-          export PATH=$PWD:$PATH
+          wget https://github.com/getzola/zola/releases/download/$ZOLA_VERSION/zola-$ZOLA_VERSION-x86_64-unknown-linux-gnu.tar.gz 
+          tar -C /usr/local/bin -xzvf zola-$ZOLA_VERSION-x86_64-unknown-linux-gnu.tar.gz
           zola check
           zola build
           ls -la ./public/
