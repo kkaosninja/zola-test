@@ -1,7 +1,7 @@
 # https://www.getzola.org/documentation/getting-started/installation/#docker
 FROM ubuntu:latest
 
-ARG ZOLA_VERSION=v0.15.3
+ARG ZOLA_VERSION=v0.16.0
 
 WORKDIR /app
 
